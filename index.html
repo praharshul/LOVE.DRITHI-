@@ -5,17 +5,22 @@
 <title>Baby I Love Uh</title>
 
 <style>
-body {
+  body {
   margin: 0;
   font-family: Arial;
   text-align: center;
   color: white;
   overflow: hidden;
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
-}
 
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+  background-size: cover;        /* 🔥 makes it FULL screen */
+  background-position: center;   /* center image */
+  background-repeat: no-repeat;  /* no repeat */
+  background-attachment: fixed;  /* smooth effect */
+}
+  
 /* Dark overlay */
-body::after {
+body::before {
   content: "";
   position: fixed;
   top: 0;
