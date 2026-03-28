@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Baby I Love Uh</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+}
+
+/* Dark overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* Glass container */
+.container {
+  margin-top: 100px;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  display: inline-block;
+}
+
+/* Buttons */
+button {
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 20px;
+  background: white;
+  color: #ff4b7d;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#noBtn {
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+/* HEART RAIN */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: fall 6s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* EXPLOSION (kisses + hearts + fireworks) */
+.firework {
+  position: absolute;
+  font-size: 24px;
+  animation: boom 1.5s ease-out forwards;
+}
+
+@keyframes boom {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Text */
+p {
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="start">
+  <h1>💖 Baby I Love Uh 💖</h1>
+  <button onclick="openLetter()">💌 Please Open Me</button>
+</div>
+
+<div class="container hidden" id="letter">
+  <h2>My Drithi ❤️</h2>
+
+  <p>
+Hey… listen, I just wanted to say this properly.
+
+I’m really, really sorry. Not just saying it, but actually meaning it. I’ve been thinking a lot about what happened, and I know I hurt you… and that honestly kills me inside.
+
+You didn’t deserve that. You deserve someone who understands you, respects you, and never makes you feel this way… and I hate that I was the reason for your pain.
+
+I’m not going to make excuses. I was wrong. But I promise you, I’m learning from this. I’m going to be better — not just for you, but because you matter that much to me.
+
+I know trust doesn’t come back instantly… and I’m ready to take that time, to prove to you through my actions that I won’t repeat this again.
+
+I just… I really love you. And I don’t want to lose something this real because of my mistake.
+  </p>
+
+  <h3>Will you forgive me?</h3>
+  <button onclick="yes()">Yes ❤️</button>
+  <button id="noBtn" onmouseover="moveNo()">No 💔</button>
+</div>
+
+<div class="container hidden" id="result"></div>
+
+<script>
+function openLetter() {
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("letter").classList.remove("hidden");
+}
+
+function yes() {
+  document.getElementById("letter").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+
+  document.getElementById("result").innerHTML =
+    "🥰 Thank youuuuu Drithi ❤️<br><br>I love you sooo much 😘💋";
+
+  // 💥 EXPLOSION
+  for (let i = 0; i < 60; i++) {
+    let item = document.createElement("div");
+    let types = ["💋", "❤️", "🎆", "✨"];
+    item.innerHTML = types[Math.floor(Math.random() * types.length)];
+
+    item.classList.add("firework");
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.top = Math.random() * 100 + "vh";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => {
+      item.remove();
+    }, 1500);
+  }
+}
+
+function moveNo() {
+  let btn = document.getElementById("noBtn");
+  let x = Math.random() * (window.innerWidth - 100);
+  let y = Math.random() * (window.innerHeight - 100);
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+
+/* HEART RAIN */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 150);
+</script>
+
+</body>
+</html>
